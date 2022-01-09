@@ -10,7 +10,8 @@ function init() {
     // Plane
     const planeGeometry = new THREE.PlaneGeometry(60, 20)
     const planeMaterial = new THREE.MeshBasicMaterial({
-        color: 0xAAAAAA
+        color: 0xAAAAAA,
+        wireframe: false
     })
     const plane = new THREE.Mesh(planeGeometry, planeMaterial)
     plane.rotation.x = -0.5 * Math.PI
