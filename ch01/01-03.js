@@ -1,31 +1,3 @@
-function createTree(scene) {
-    // --- trunk
-    // 旧版 Three.js 中 CubeGeometry 是 BoxGeometry 的一个别名，新版本已移除
-    // Three.js r125 removed support for Geometry
-    const trunk = new THREE.BoxGeometry(1, 8, 1)
-    const trunkMesh = new THREE.Mesh(trunk, new THREE.MeshLambertMaterial({
-        color: 0x8b4513
-    }))
-
-    trunkMesh.position.set(-10, 4, 0)
-    trunkMesh.castShadow = true
-    trunkMesh.receiveShadow = true
-
-    scene.add(trunkMesh)
-
-    // --- leaves
-
-    const leaves = new THREE.SphereGeometry(4)
-    const leavesMesh = new THREE.Mesh(leaves, new THREE.MeshLambertMaterial({
-        color: 0x00ff00
-    }))
-    
-    leavesMesh.position.set(-10, 12, 0)
-    leavesMesh.castShadow = true
-    leavesMesh.receiveShadow = true
-    
-    scene.add(leavesMesh)
-}
 
 function createCube(scene) {
     const cubeGeometry = new THREE.BoxGeometry(4, 4, 4)
@@ -103,6 +75,62 @@ function createRenderer(scene, camera) {
     renderer.render(scene, camera)
 }
 
+function createTree(scene) {
+    // --- trunk
+    // 旧版 Three.js 中 CubeGeometry 是 BoxGeometry 的一个别名，新版本已移除
+    // Three.js r125 removed support for Geometry
+    const trunk = new THREE.BoxGeometry(1, 8, 1)
+    const trunkMesh = new THREE.Mesh(trunk, new THREE.MeshLambertMaterial({
+        color: 0x8b4513
+    }))
+
+    trunkMesh.position.set(-10, 4, 0)
+    trunkMesh.castShadow = true
+    trunkMesh.receiveShadow = true
+
+    scene.add(trunkMesh)
+
+    // --- leaves
+
+    const leaves = new THREE.SphereGeometry(4)
+    const leavesMesh = new THREE.Mesh(leaves, new THREE.MeshLambertMaterial({
+        color: 0x00ff00
+    }))
+    
+    leavesMesh.position.set(-10, 12, 0)
+    leavesMesh.castShadow = true
+    leavesMesh.receiveShadow = true
+    
+    scene.add(leavesMesh)
+}
+
+function createHouse(scene) {
+    // root
+
+    const roof = new THREE.ConeGeometry(5, 4)
+    const roofMesh = new THREE.Mesh(roof, new THREE.MeshLambertMaterial({
+        color: 0x8b7213
+    }))
+    roofMesh.position.set(25, 8, 0)
+    roofMesh.receiveShadow = true
+    roofMesh.castShadow = true
+
+    scene.add(roofMesh)
+
+    // base
+
+    const base = new THREE.CylinderGeometry(5, 5, 6)
+    const baseMesh = new THREE.Mesh(base, new THREE.MeshLambertMaterial({
+        color: 0xffe4e4
+    }))
+    baseMesh.position.set(25, 3, 0)
+    baseMesh.receiveShadow = true
+    baseMesh.castShadow = true
+
+    scene.add(baseMesh)
+}
+
+
 function init() {
     // --- Scene 
     const scene = new THREE.Scene()
@@ -118,7 +146,9 @@ function init() {
     // createCube(scene)
 
     // Sphere
-    createSphere(scene)
+    //createSphere(scene)
+
+    createHouse(scene)
 
     // Plane
     createPlane(scene)
