@@ -84,6 +84,8 @@ function createRenderer(scene, camera) {
 }
 
 function init() {
+    const stats = initStats()
+
     // --- Scene 
     const scene = new THREE.Scene()
 
@@ -107,8 +109,10 @@ function init() {
     renderScene()
 
     function renderScene() {
-        requestAnimationFrame(renderScene)
-
+        stats.begin()
         renderer.render(scene, camera)
+        stats.end()
+
+        requestAnimationFrame(renderScene)
     }
 }
