@@ -9,7 +9,7 @@ function init() {
 
     // Cube
     const cubeGeometry = new THREE.BoxGeometry(4, 4, 4)
-    const cubeMaterial = new THREE.MeshBasicMaterial({
+    const cubeMaterial = new THREE.MeshLambertMaterial({
         color: 0xFF0000,
         wireframe: false
     })
@@ -20,7 +20,7 @@ function init() {
 
     // Sphere
     const sphereGeometry = new THREE.SphereGeometry(4, 20, 20)
-    const sphereMaterial = new THREE.MeshBasicMaterial({
+    const sphereMaterial = new THREE.MeshLambertMaterial({
         color: 0x7777FF,
         wireframe: false
     })
@@ -32,7 +32,7 @@ function init() {
 
     // Plane
     const planeGeometry = new THREE.PlaneGeometry(60, 20)
-    const planeMaterial = new THREE.MeshBasicMaterial({
+    const planeMaterial = new THREE.MeshLambertMaterial({
         color: 0xAAAAAA,
         wireframe: false
     })
