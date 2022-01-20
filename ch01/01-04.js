@@ -110,6 +110,11 @@ function init() {
 
     function renderScene() {
         stats.begin()
+
+        cube.rotation.x += 0.005
+        cube.rotation.y += 0.005
+        cube.rotation.z += 0.005
+
         renderer.render(scene, camera)
         stats.end()
 
