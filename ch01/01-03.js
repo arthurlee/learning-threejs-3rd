@@ -130,6 +130,45 @@ function createHouse(scene) {
     scene.add(baseMesh)
 }
 
+function createGroundPlane(scene) {
+    const planeGeometry = new THREE.PlaneGeometry(70, 50)
+    const planeMaterial = new THREE.MeshLambertMaterial({
+        color: 0x9acd32
+    })
+    const plane = new THREE.Mesh(planeGeometry, planeMaterial)
+    plane.receiveShadow = true
+
+    plane.rotation.x = -0.5 * Math.PI;
+    plane.position.set(15, 0, 0)
+
+    scene.add(plane)
+}
+
+function createBoundingWall(scene) {
+    const wallLeft = new THREE.BoxGeometry(70, 2, 2)
+    const wallRight = new THREE.BoxGeometry(70, 2, 2)
+    const wallTop = new THREE.BoxGeometry(2, 2, 50)
+    const wallBottom = new THREE.BoxGeometry(2, 2, 50)
+
+    const wallMaterial = new THREE.MeshLambertMaterial({
+        color: 0xa0522d
+    })
+
+    const wallLeftMesh = new THREE.Mesh(wallLeft, wallMaterial)
+    const wallRightMesh = new THREE.Mesh(wallRight, wallMaterial)
+    const wallTopMesh = new THREE.Mesh(wallTop, wallMaterial)
+    const wallBottomMesh = new THREE.Mesh(wallBottom, wallMaterial)
+
+    wallLeftMesh.position.set(15, 1, -25)
+    wallRightMesh.position.set(15, 1, 25)
+    wallTopMesh.position.set(-19, 1, 0)
+    wallBottomMesh.position.set(49, 1, 0)
+
+    scene.add(wallLeftMesh)
+    scene.add(wallRightMesh)
+    scene.add(wallTopMesh)
+    scene.add(wallBottomMesh)
+}
 
 function init() {
     // --- Scene 
@@ -151,7 +190,9 @@ function init() {
     createHouse(scene)
 
     // Plane
-    createPlane(scene)
+    //createPlane(scene)
+    createGroundPlane(scene)
+    createBoundingWall(scene)
 
     // lights
     createLights(scene)
