@@ -15,6 +15,7 @@ function init() {
     })
     const cube = new THREE.Mesh(cubeGeometry, cubeMaterial)
     cube.position.set(-4, 2, 0)
+    cube.castShadow = true
 
     scene.add(cube)
 
@@ -67,6 +68,7 @@ function init() {
     const renderer = new THREE.WebGLRenderer()
     renderer.setClearColor(new THREE.Color(0x000000))
     renderer.setSize(window.innerWidth, window.innerHeight)
+    renderer.shadowMap.enabled = true
 
     document.getElementById("webgl-output").appendChild(renderer.domElement)
 
