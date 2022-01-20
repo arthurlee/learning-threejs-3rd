@@ -106,14 +106,20 @@ function init() {
 
     // --- renderer
     const renderer = createRenderer(scene, camera)
-    renderScene()
 
+    let step = 0
+    renderScene()
+    
     function renderScene() {
         stats.begin()
 
         cube.rotation.x += 0.005
         cube.rotation.y += 0.005
         cube.rotation.z += 0.005
+
+        step += 0.04
+        sphere.position.x = 20 + 10 * Math.cos(step)
+        sphere.position.y = 2 + 10 * Math.abs(Math.sin(step))
 
         renderer.render(scene, camera)
         stats.end()
