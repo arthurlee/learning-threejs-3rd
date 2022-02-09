@@ -107,6 +107,10 @@ function init() {
     // --- renderer
     const renderer = createRenderer(scene, camera)
 
+    // Trackball controls
+    const trackballControls = initTrackballControls(camera, renderer)
+    const clock = new THREE.Clock()
+
     // dat.GUI
     const controls = new function() {
         this.rotationSpeed = 0.02
@@ -123,6 +127,8 @@ function init() {
     function renderScene() {
         stats.begin()
 
+        trackballControls.update(clock.getDelta())
+
         cube.rotation.x += controls.rotationSpeed
         cube.rotation.y += controls.rotationSpeed
         cube.rotation.z += controls.rotationSpeed
@@ -132,6 +138,7 @@ function init() {
         sphere.position.y = 2 + 10 * Math.abs(Math.sin(step))
 
         renderer.render(scene, camera)
+
         stats.end()
 
         requestAnimationFrame(renderScene)
